@@ -3,15 +3,17 @@ let pass = document.getElementById("password")
 
 const myForm = () => {
 
+    event.preventDefault();
     let uname = userName.value
     let pwd = pass.value
     let us = true;
     let ps = true;
 
+    // user name
     if (uname == "") {
         document.getElementById("unameErr").innerHTML = "Username is required"
     } else {
-        if (/[A-Z]/.    test(uname)) {
+        if (/[A-Z]/.test(uname)) {
             document.getElementById("unameErr").innerHTML = "Enterd Small Character"
         } else {
             console.log(uname);
@@ -19,7 +21,7 @@ const myForm = () => {
             us = true;
         }
     }
-
+    //user password
     if (pwd == "") {
         document.getElementById("pwdErr").innerHTML = "Password is required"
     } else {
@@ -33,22 +35,21 @@ const myForm = () => {
         }
     }
 
-    if (us && ps == true) {
-
+    if (us && ps) {
         try {
             let suc = isLoggedIn(uname, pwd);
             console.log(suc);
-        }
+        }   
         catch (error) {
             console.log("Error", error);
         }
 
     }
-    return false;
+    // return false;
 }
 
 const isLoggedIn = (user, password) => {
-    if (user == "Deep" && password == "7383884401") {
+    if (user == "deep" && password == "7383884401") {
         return "Login Successfull...";
     }
     else {
